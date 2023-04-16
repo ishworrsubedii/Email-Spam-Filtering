@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {%load static%}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+
+    <meta charset="UTF-8" />
+    <title>Spam Prediction</title>
+
+    <style>
+      /* set a fixed width for the container */
+
+      .container {
+        width: 50%;
+        margin: 0 auto;
+      }
+      /* adjust layout for smaller screens */
+
+      @media screen and (max-width: 600px) {
+        .container {
+          width: 90%;
+        }
+      }
+      /* adjust font size for smaller screens */
+
+      @media screen and (max-width: 400px) {
+        .form-title {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <form class="form" action="#" method="post">
+        {% csrf_token %}
+
+        <h1 class="form-title">Spam Mail Prediction Using Classification ML</h1>
+        <div class="form-group">
+          <label for="name">Message</label>
+          <input type="text" id="name" name="message" />
+        </div>
+        <button type="submit" class="btn btn-submit">Find</button>
+      </form>
+    </div>
+    <p class="accuracy">Accuracy:0.9721823402727925</p>
+    <p class="accuracy">
+      Spam Example:Customer service annoncement. You have a New Years delivery
+      waiting for you. Please call 07046744435 now to arrange delivery
+    </p>
+    <p class="accuracy">Normal Mail:I'm leaving my house now</p>
+    <div>
+      {% if result%}
+      <h2 class="spamornot">{{result}}</h2>
+      {% endif %}
+    </div>
+  </body>
+  <footer class="footer">
+    <p>2023-ishwor subedi</p>
+  </footer>
+</html>
